@@ -17,12 +17,13 @@ void setup() {
 
 	if (debug) {
 		delay(1000);
-		Serial.println(F("CCD-CAN Bus"));
+		Serial.println(F("CAN-CCD Bus"));
 	}
 
 	ccdBus.init(Serial1);
 
 	if (canBus.init()) {
+		canBus.setMask(0x360 | 0x361 | 0x370 | 0x372 | 0x3E0 | 0x3E2 | 0x3E4);
 		digitalWrite(led, HIGH);
 	} else {
 		digitalWrite(led, LOW);
@@ -47,12 +48,10 @@ char CR = 10;
 float rpm = 2500;
 byte bitfield = 0x00;
 void loop() {
-	delay(50);
-
 	/*byte inByte = (byte) Serial1.read();
 	Serial.println(inByte, HEX);*/
 
-	if (Serial.available() > 0) {
+	/*if (Serial.available() > 0) {
 		dataIn = Serial.readStringUntil(CR);
 		bitfield = dataIn.toInt();
 		Serial.println(bitfield, HEX);
@@ -61,31 +60,9 @@ void loop() {
 	ccdBus.setRPM(rpm + random(0, 10));
 	ccdBus.setMPH(55);
 	ccdBus.setKPH(85.5);
-	ccdBus.doUpdates();
+	ccdBus.doUpdates();*/
 
 	//delay(100);
 	//ccdBus.busTransmit(FEATURE_STATUS_ID, 2, bitfield, bitfield);
-	/*if (rx == true) {
-		if (1 == can.available()) {
-			can.read(rxmsg);
-			Serial.print("PID: ");
-			Serial.print(rxmsg.id, HEX);
-			Serial.print(" Data:");
-			for (int x = 0; x < rxmsg.len; x ++) {
-				Serial.print(" ");
-				if (rxmsg.req == 0) {
-					if (rxmsg.buf[x] < 10) {
-						Serial.print("0");
-					}
-					Serial.print(rxmsg.buf[x], HEX);
-				} else {
-					Serial.print("00");
-				}
-			}
-			Serial.print(" Request: ");
-			Serial.print(rxmsg.req);
-			Serial.print(" Timestamp: ");
-			Serial.println(rxmsg.timestamp);
-		}
-	}*/
+	canBus.tick();
 }

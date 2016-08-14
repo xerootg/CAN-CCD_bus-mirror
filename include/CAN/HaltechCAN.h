@@ -1,7 +1,6 @@
 #include "CAN.h"
 
 class HaltechCAN: public CAN {
-public:
-	bool getUpdates();
+private:
 	void busRecieve();
 };
