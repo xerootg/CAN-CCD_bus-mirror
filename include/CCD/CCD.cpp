@@ -1,9 +1,9 @@
-#include "CCD.h"
-#include "CCDCodes.h"
-#include "../Vehicles.h"
 #include <Arduino.h>
 #include <HardwareSerial.h>
 #include <Math.h>
+#include "CCD.h"
+#include "CCDCodes.h"
+#include "../Vehicles.h"
 
 /*
  * Initialize serial bus and other necessary information.
@@ -12,7 +12,7 @@
  * @param	object	HardwareSerial reference - Typically Serial1 on Arduino and Teensy
  * @return	void
  */
-void CCD::init(HardwareSerial& serial) {
+CCD::CCD(HardwareSerial& serial) {
 	this->ccdBus = serial;
 	this->ccdBus.begin(this->ccdBaud);
 }

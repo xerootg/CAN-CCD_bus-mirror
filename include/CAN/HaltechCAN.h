@@ -1,6 +1,8 @@
-#include "CAN.h"
+#include "CAN.cpp"
 
 class HaltechCAN: public CAN {
-private:
-	void busRecieve();
+	public:
+		HaltechCAN();
+	private:
+		void busRecieve();
 };

@@ -2,8 +2,12 @@
 #include <Arduino.h>
 #include <Math.h>
 
+HaltechCAN::HaltechCAN() {
+
+}
+
 void HaltechCAN::busRecieve() {
-	Serial.print("PID: ");
+	/*Serial.print("PID: ");
 	Serial.print(this->rxMsg.id, HEX);
 	Serial.print(" Data:");
 	for (int x = 0; x < this->rxMsg.len; x ++) {
@@ -20,5 +24,5 @@ void HaltechCAN::busRecieve() {
 	Serial.print(" Request: ");
 	Serial.print(this->rxMsg.req);
 	Serial.print(" Timestamp: ");
-	Serial.println(this->rxMsg.timestamp);
+	Serial.println(this->rxMsg.timestamp);*/
 }

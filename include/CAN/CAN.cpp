@@ -2,6 +2,10 @@
 #include <Arduino.h>
 #include <Math.h>
 
+CAN::CAN() {
+
+}
+
 /*
  * Initialize CAN bus and other necessary information.
  *
