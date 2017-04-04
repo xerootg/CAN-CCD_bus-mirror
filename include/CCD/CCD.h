@@ -1,3 +1,6 @@
+#ifndef CCD_H
+#define CCD_H
+
 class CCD {
 	public:
 		CCD(HardwareSerial& serial);
@@ -41,3 +44,5 @@ class CCD {
 		bool cruiseLightOn = false;
 		int boolToLight(bool on);
 };
+
+#endif

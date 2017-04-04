@@ -1,4 +1,4 @@
-#include "CAN.cpp"
+#include "CAN.h"
 
 class HaltechCAN: public CAN {
 	public:

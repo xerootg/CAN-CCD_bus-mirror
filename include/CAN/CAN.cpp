@@ -13,7 +13,7 @@ CAN::CAN() {
  * @return	void
  */
 float CAN::init() {
-	int speedIndex = this->canBus.connect();
+	int speedIndex = this->canBus.begin();
 
 	if (speedIndex != 255) {
 		this->busInitialized = true;

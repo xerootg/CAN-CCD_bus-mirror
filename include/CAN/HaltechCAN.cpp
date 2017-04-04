@@ -1,3 +1,4 @@
+#include "CAN.cpp"
 #include "HaltechCAN.h"
 #include <Arduino.h>
 #include <Math.h>

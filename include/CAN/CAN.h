@@ -1,3 +1,6 @@
+#ifndef CAN_H
+#define CAN_H
+
 #include <FlexCAN.h>
 
 class CAN {
@@ -37,3 +40,5 @@ class CAN {
 		bool checkGaugesLight = false;
 		virtual void busRecieve() = 0;
 };
+
+#endif
