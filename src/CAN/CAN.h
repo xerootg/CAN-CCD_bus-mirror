@@ -22,14 +22,14 @@ class CAN {
 		CAN_message_t rxMsg;
 	private:
 		FlexCAN canBus;
-	    struct CAN_filter_t filter0;
-	    struct CAN_filter_t filter1;
-	    struct CAN_filter_t filter2;
-	    struct CAN_filter_t filter3;
-	    struct CAN_filter_t filter4;
-	    struct CAN_filter_t filter5;
-	    struct CAN_filter_t filter6;
-	    struct CAN_filter_t filter7;
+		CAN_filter_t filter0;
+		CAN_filter_t filter1;
+		CAN_filter_t filter2;
+		CAN_filter_t filter3;
+		CAN_filter_t filter4;
+		CAN_filter_t filter5;
+		CAN_filter_t filter6;
+		CAN_filter_t filter7;
 		float rpm = 0.0;
 		float mph = 0.0;
 		float kph = 0.0;

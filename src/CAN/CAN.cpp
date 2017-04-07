@@ -23,9 +23,9 @@ float CAN::init() {
 }
 
 void CAN::setMask(uint32_t idFilter) {
-    //struct CAN_filter_t filter;
-	//filter.id = idFilter;
-	this->canBus.setMask(idFilter, 0);
+	CAN_filter_t filter;
+	filter.id = idFilter;
+	this->canBus.setMask(filter);
 }
 
 void CAN::tick() {
