@@ -17,13 +17,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #define XJ_PLATFORM true
 
-#include "include/CCD/CCD.cpp"
-#include "include/CAN/HaltechCAN.cpp"
+//#include "include/Boards.h"
+#include "include/CCD/CCD.h"
+//#include "include/CAN/HaltechCAN.cpp"
 
 const boolean debug = true;
 
 const int led = LED_BUILTIN;
-HaltechCAN canBus;
+//HaltechCAN canBus;
 CCD ccdBus(Serial1);
 
 float lastMPH = 0;
@@ -44,6 +45,8 @@ void setup() {
 		digitalWrite(led, LOW);
 	}*/
 
+	//ccdBus = new CCD(Serial1);
+	//ccdBus.init(Serial1);
 	ccdBus.setVoltage(14);
 	ccdBus.setOilPSI(35);
 	ccdBus.setFuelPercent(50);
