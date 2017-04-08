@@ -17,7 +17,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #define XJ_PLATFORM true
 
-//#include "src/Boards.h"
+#include "src/Boards.h"
 #include "src/CCD/CCD.h"
 //#include "src/CAN/HaltechCAN.cpp"
 

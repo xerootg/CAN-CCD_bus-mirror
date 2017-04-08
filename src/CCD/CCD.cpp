@@ -13,8 +13,8 @@
  * @return	void
  */
 CCD::CCD(HardwareSerial& serial) {
-	this->ccdBus = serial;
-	this->ccdBus.begin(this->ccdBaud);
+	this.ccdBus = serial;
+	this.ccdBus.begin(this.ccdBaud);
 }
 
 /*
@@ -26,9 +26,9 @@ CCD::CCD(HardwareSerial& serial) {
  */
 void CCD::setRPM(float rpm) {
 	int newRPM = round(constrain(rpm / 32, 0, 255));
-	if (newRPM != this->rpm) {
-		this->rpm = newRPM;
-		this->needsUpdateRPM = true;
+	if (newRPM != this.rpm) {
+		this.rpm = newRPM;
+		this.needsUpdateRPM = true;
 	}
 }
 
@@ -42,9 +42,9 @@ void CCD::setRPM(float rpm) {
 void CCD::setMPH(float mph) {
 	//float kph = mph * 1.60934400061; //Update KPH at the same time for consistency.
 	int newMPH = round(constrain(mph * SPEED_MULTIPLIER, 0, 255));
-	if (newMPH != this->mph) {
-		this->mph = newMPH;
-		this->needsUpdateSpeed = true;
+	if (newMPH != this.mph) {
+		this.mph = newMPH;
+		this.needsUpdateSpeed = true;
 	}
 }
 
@@ -59,9 +59,9 @@ void CCD::setMPH(float mph) {
 void CCD::setKPH(float kph) {
 	//float mph = kph * 0.621371192; //Update MPH at the same time for consistency.
 	int newKPH = round(constrain(kph, 0, 255));
-	if (newKPH != this->kph) {
-		this->kph = newKPH;
-		this->needsUpdateSpeed = true;
+	if (newKPH != this.kph) {
+		this.kph = newKPH;
+		this.needsUpdateSpeed = true;
 	}
 }
 
@@ -74,9 +74,9 @@ void CCD::setKPH(float kph) {
  */
 void CCD::setOilPSI(float oilPsi) {
 	int newPSI = round(constrain(oilPsi * 2, 0, 255));
-	if (newPSI != this->oilPsi) {
-		this->oilPsi = newPSI;
-		this->needsUpdateHealth = true;
+	if (newPSI != this.oilPsi) {
+		this.oilPsi = newPSI;
+		this.needsUpdateHealth = true;
 	}
 }
 
@@ -89,9 +89,9 @@ void CCD::setOilPSI(float oilPsi) {
  */
 void CCD::setVoltage(float voltage) {
 	int newVoltage = round(constrain(voltage * 8, 0, 255));
-	if (newVoltage != this->voltage) {
-		this->voltage = newVoltage;
-		this->needsUpdateHealth = true;
+	if (newVoltage != this.voltage) {
+		this.voltage = newVoltage;
+		this.needsUpdateHealth = true;
 	}
 }
 
@@ -104,9 +104,9 @@ void CCD::setVoltage(float voltage) {
  */
 void CCD::setFuelPercent(float fuelPercent) {
 	int newFuelPercent = round(constrain(254 * (fuelPercent / 100), 0, 254));
-	if (newFuelPercent != this->fuelPercent) {
-		this->fuelPercent = newFuelPercent;
-		this->needsUpdateFuelPercent = true;
+	if (newFuelPercent != this.fuelPercent) {
+		this.fuelPercent = newFuelPercent;
+		this.needsUpdateFuelPercent = true;
 	}
 }
 
@@ -118,11 +118,11 @@ void CCD::setFuelPercent(float fuelPercent) {
  * @return	boolean	Previous on/off state.
  */
 bool CCD::setCheckEngineLight(bool on) {
-	bool previousState = this->checkEngineLightOn;
+	bool previousState = this.checkEngineLightOn;
 	if (on != previousState) {
-		this->needsUpdateLights = true;
+		this.needsUpdateLights = true;
 	}
-	this->checkEngineLightOn = on;
+	this.checkEngineLightOn = on;
 	return previousState;
 }
 
@@ -134,11 +134,11 @@ bool CCD::setCheckEngineLight(bool on) {
  * @return	boolean	Previous on/off state.
  */
 bool CCD::setCheckGaugesLight(bool on) {
-	bool previousState = this->checkGaugesLightOn;
+	bool previousState = this.checkGaugesLightOn;
 	if (on != previousState) {
-		this->needsUpdateLights = true;
+		this.needsUpdateLights = true;
 	}
-	this->checkGaugesLightOn = on;
+	this.checkGaugesLightOn = on;
 	return previousState;
 }
 
@@ -150,11 +150,11 @@ bool CCD::setCheckGaugesLight(bool on) {
  * @return	boolean	Previous on/off state.
  */
 bool CCD::setAirBagLight(bool on) {
-	bool previousState = this->airBagLightOn;
+	bool previousState = this.airBagLightOn;
 	if (on != previousState) {
-		this->needsUpdateLights = true;
+		this.needsUpdateLights = true;
 	}
-	this->airBagLightOn = on;
+	this.airBagLightOn = on;
 	return previousState;
 }
 
@@ -166,11 +166,11 @@ bool CCD::setAirBagLight(bool on) {
  * @return	boolean	Previous on/off state.
  */
 bool CCD::setSKIMLight(bool on) {
-	bool previousState = this->skimLightOn;
+	bool previousState = this.skimLightOn;
 	if (on != previousState) {
-		this->needsUpdateLights = true;
+		this.needsUpdateLights = true;
 	}
-	this->skimLightOn = on;
+	this.skimLightOn = on;
 	return previousState;
 }
 
@@ -182,11 +182,11 @@ bool CCD::setSKIMLight(bool on) {
  * @return	boolean	Previous on/off state.
  */
 bool CCD::setShiftLight(bool on) {
-	bool previousState = this->shiftLightOn;
+	bool previousState = this.shiftLightOn;
 	if (on != previousState) {
-		this->needsUpdateLights = true;
+		this.needsUpdateLights = true;
 	}
-	this->shiftLightOn = on;
+	this.shiftLightOn = on;
 	return previousState;
 }
 
@@ -198,11 +198,11 @@ bool CCD::setShiftLight(bool on) {
  * @return	boolean	Previous on/off state.
  */
 bool CCD::setCruiseLight(bool on) {
-	bool previousState = this->cruiseLightOn;
+	bool previousState = this.cruiseLightOn;
 	if (on != previousState) {
-		this->needsUpdateLights = true;
+		this.needsUpdateLights = true;
 	}
-	this->cruiseLightOn = on;
+	this.cruiseLightOn = on;
 	return previousState;
 }
 
@@ -227,9 +227,9 @@ void CCD::setCoolantTemperature(float tempF) {
 	}
 	int newTemp = round(constrain(hex, 0, 255));
 
-	if (newTemp != this->coolantTemperature) {
-		this->coolantTemperature = newTemp;
-		this->needsUpdateHealth = true;
+	if (newTemp != this.coolantTemperature) {
+		this.coolantTemperature = newTemp;
+		this.needsUpdateHealth = true;
 	}
 }
 
@@ -243,42 +243,42 @@ bool CCD::doUpdates() {
 	bool didUpdates = false;
 
 	//RPM has to be updated every tick, even with the engine off, to prevent the "no bus" error after twenty seconds.
-	this->busTransmit(RPM_MAP_ID, 2, this->rpm, 0x00); //Updating MAP not yet implemented.
-	this->needsUpdateRPM = false;
+	this.busTransmit(RPM_MAP_ID, 2, this.rpm, 0x00); //Updating MAP not yet implemented.
+	this.needsUpdateRPM = false;
 	didUpdates = true;
 
 	delay(50);
 
 	//Speed also has to be updated within about three seconds or it falls back to zero.
-	this->busTransmit(SPEED_ID, 2, this->mph, this->kph);
-	this->needsUpdateSpeed = false;
+	this.busTransmit(SPEED_ID, 2, this.mph, this.kph);
+	this.needsUpdateSpeed = false;
 	didUpdates = true;
 
 	delay(50);
 
-	if (this->needsUpdateHealth) {
+	if (this.needsUpdateHealth) {
 		//XJ gauge clusters continually hold the last known value.
-		this->busTransmit(VOLTS_OILPSI_COOLTEMP_ID, 4, this->voltage, this->oilPsi, this->coolantTemperature, 0xFF);
-		this->needsUpdateHealth = false;
+		this.busTransmit(VOLTS_OILPSI_COOLTEMP_ID, 4, this.voltage, this.oilPsi, this.coolantTemperature, 0xFF);
+		this.needsUpdateHealth = false;
 		didUpdates = true;
 
-		if (this->needsUpdateFuelPercent) {
+		if (this.needsUpdateFuelPercent) {
 			delay(50);
 		}
 	}
 
-	if (this->needsUpdateFuelPercent) {
-		this->busTransmit(FUEL_ID, 1, this->fuelPercent);
-		this->needsUpdateFuelPercent = false;
+	if (this.needsUpdateFuelPercent) {
+		this.busTransmit(FUEL_ID, 1, this.fuelPercent);
+		this.needsUpdateFuelPercent = false;
 		didUpdates = true;
 
-		if (this->needsUpdateLights) {
+		if (this.needsUpdateLights) {
 			delay(50);
 		}
 	}
 
-	if (this->needsUpdateLights) {
-		this->doUpdateLights();
+	if (this.needsUpdateLights) {
+		this.doUpdateLights();
 		didUpdates = true;
 	}
 
@@ -293,20 +293,20 @@ bool CCD::doUpdates() {
  */
 void CCD::doUpdateLights() {
 	//@TODO: Fix feature status to assemble bits correctly.
-	this->busTransmit(FEATURE_STATUS_ID, 2, this->boolToLight(this->shiftLightOn), this->boolToLight(this->cruiseLightOn));
+	this.busTransmit(FEATURE_STATUS_ID, 2, this.boolToLight(this.shiftLightOn), this.boolToLight(this.cruiseLightOn));
 	delay(50);
-	this->busTransmit(SKIM_LIGHT_ID, 1, this->boolToLight(this->skimLightOn));
+	this.busTransmit(SKIM_LIGHT_ID, 1, this.boolToLight(this.skimLightOn));
 	delay(50);
-	this->busTransmit(CG_LIGHT_ID, 2, this->boolToLight(this->checkGaugesLightOn), 0x00);
+	this.busTransmit(CG_LIGHT_ID, 2, this.boolToLight(this.checkGaugesLightOn), 0x00);
 	delay(50);
-	this->busTransmit(CE_LIGHT_ID, 2, this->boolToLight(this->checkEngineLightOn), 0x00);
+	this.busTransmit(CE_LIGHT_ID, 2, this.boolToLight(this.checkEngineLightOn), 0x00);
 	delay(50);
-	if (this->airBagLightOn) {
-		this->busTransmit(AIRBAG_BAD_ID, 1, 0xFF);
+	if (this.airBagLightOn) {
+		this.busTransmit(AIRBAG_BAD_ID, 1, 0xFF);
 	} else {
-		this->busTransmit(AIRBAG_GOOD_ID, 1, 0xFF);
+		this.busTransmit(AIRBAG_GOOD_ID, 1, 0xFF);
 	}
-	this->needsUpdateLights = false;
+	this.needsUpdateLights = false;
 }
 
 /*
@@ -320,16 +320,16 @@ void CCD::busTransmit(int id, int numBytes, ...) {
 	va_start(bytes, numBytes);
 
 	int checksum = id;
-	this->ccdBus.write(id);
+	this.ccdBus.write(id);
 	for (int i = 0; i < numBytes; ++i) {
 		int toSend = va_arg(bytes, int);
-		this->ccdBus.write(toSend);
+		this.ccdBus.write(toSend);
 		checksum += toSend;
 	}
 
 	va_end(bytes);
 	checksum = checksum & 0xFF;
-	this->ccdBus.write(checksum);
+	this.ccdBus.write(checksum);
 }
 
 /*

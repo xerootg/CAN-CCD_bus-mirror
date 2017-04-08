@@ -1,6 +1,6 @@
-#include "CAN.h"
+#include "CANBase.h"
 
-class HaltechCAN: public CAN {
+class HaltechCAN: public CANBase {
 	public:
 		HaltechCAN();
 	private:
