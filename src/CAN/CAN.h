@@ -1,8 +1,6 @@
 #ifndef CAN_H
 #define CAN_H
 
-#include <FlexCAN.h>
-
 class CAN {
 	public:
 		CAN();
@@ -21,7 +19,7 @@ class CAN {
 		bool busInitialized = false;
 		CAN_message_t rxMsg;
 	private:
-		FlexCAN canBus;
+		//FlexCAN canBus;
 		CAN_filter_t filter0;
 		CAN_filter_t filter1;
 		CAN_filter_t filter2;
