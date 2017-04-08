@@ -45,7 +45,7 @@ void setup() {
 	} else {
 		digitalWrite(led, LOW);
 	}*/
-
+	digitalWrite(led, HIGH);
 	//ccdBus = new CCD(Serial1);
 	//ccdBus.init(Serial1);
 	ccdBus.init(&Serial1);
@@ -75,14 +75,14 @@ void loop() {
 		dataIn = Serial.readStringUntil(CR);
 		bitfield = dataIn.toInt();
 		Serial.println(bitfield, HEX);
-	}
+	}*/
 
 	ccdBus.setRPM(rpm + random(0, 10));
 	ccdBus.setMPH(55);
 	ccdBus.setKPH(85.5);
-	ccdBus.doUpdates();*/
+	Serial.println(ccdBus.doUpdates());
 
-	//delay(100);
+	delay(100);
 	//ccdBus.busTransmit(FEATURE_STATUS_ID, 2, bitfield, bitfield);
 	//canBus.tick();
 }

@@ -19,8 +19,8 @@ float CANBase::init() {
 	if (speedIndex != 255) {
 		this.busInitialized = true;
 		return true;
-	}
-	return false;*/
+	}*/
+	return false;
 }
 
 void CANBase::setMask(uint32_t idFilter) {
