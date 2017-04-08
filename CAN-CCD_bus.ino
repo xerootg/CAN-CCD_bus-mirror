@@ -17,15 +17,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #define XJ_PLATFORM true
 
-#include "src/Boards.h"
+//#include "src/Boards.h"
 #include "src/CCD/CCD.h"
-//#include "src/CAN/HaltechCAN.cpp"
+#include "src/CAN/HaltechCAN.h"
 
 const boolean debug = true;
 
 const int led = LED_BUILTIN;
-//HaltechCAN canBus;
-CCD ccdBus(Serial1);
+HaltechCAN canBus();
+CCD ccdBus(&Serial1);
 
 float lastMPH = 0;
 unsigned long lastMillis = 0;

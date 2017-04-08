@@ -1,6 +1,5 @@
 #ifndef CANBase_H
 #define CANBase_H
-#include "../Boards.h"
 #include <mcp_can.h>
 
 class CANBase {
@@ -19,7 +18,6 @@ class CANBase {
 		bool getCheckGaugesLight();
 		bool busInitialized = false;
 	private:
-		MCP_CAN canBus(CAN0_CS);
 		float rpm = 0.0;
 		float mph = 0.0;
 		float kph = 0.0;

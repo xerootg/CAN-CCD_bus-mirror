@@ -1,3 +1,6 @@
+#ifndef HaltechCAN_H
+#define HaltechCAN_H
+
 #include "CANBase.h"
 
 class HaltechCAN: public CANBase {
@@ -6,3 +9,5 @@ class HaltechCAN: public CANBase {
 	private:
 		void busRecieve();
 };
+
+#endif

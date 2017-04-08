@@ -4,7 +4,7 @@
 #include <SPI.h>
 
 CANBase::CANBase() {
-
+	//MCP_CAN canBus(10);
 }
 
 /*
@@ -14,27 +14,26 @@ CANBase::CANBase() {
  * @return	void
  */
 float CANBase::init() {
-	this.canBus = new MCP_CAN()
-	int speedIndex = this.canBus.connect();
+	/*int speedIndex = this.canBus.connect();
 
 	if (speedIndex != 255) {
 		this.busInitialized = true;
 		return true;
 	}
-	return false;
+	return false;*/
 }
 
 void CANBase::setMask(uint32_t idFilter) {
-	CAN_filter_t filter;
+	/*CAN_filter_t filter;
 	filter.id = idFilter;
-	this.canBus.setMask(filter);
+	this.canBus.setMask(filter);*/
 }
 
 void CANBase::tick() {
-	if (this.busInitialized && canBus.available()) {
+	/*if (this.busInitialized && canBus.available()) {
 		canBus.read(this.rxMsg);
 		this.busRecieve();
-	}
+	}*/
 }
 
 float CANBase::getRPM() {

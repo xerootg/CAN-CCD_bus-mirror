@@ -3,7 +3,7 @@
 
 class CCD {
 	public:
-		CCD(HardwareSerial& serial);
+		CCD(HardwareSerial* serial);
 		void setRPM(float rpm);
 		void setMPH(float mph);
 		void setKPH(float kph);
@@ -21,7 +21,7 @@ class CCD {
 		bool doUpdates();
 		void doUpdateLights();
 	private:
-		HardwareSerial ccdBus;
+		HardwareSerial* ccdBus;
 		const int ccdBaud = 7812; //Due to how AVRs work this ends up being the needed 7812.5 assuming the MHz has no remainder when divided by 1.
 		//Gauge values stored as a byte.
 		int rpm = 0x00;
