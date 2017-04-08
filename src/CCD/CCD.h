@@ -3,7 +3,8 @@
 
 class CCD {
 	public:
-		CCD(HardwareSerial* serial);
+		CCD();
+		void init(HardwareSerial* serial);
 		void setRPM(float rpm);
 		void setMPH(float mph);
 		void setKPH(float kph);
