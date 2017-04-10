@@ -19,12 +19,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //#include "src/Boards.h"
 #include "src/CCD/CCD.h"
-//#include "src/CAN/HaltechCAN.h"
+#include "src/CAN/HaltechCAN.h"
 
 const boolean debug = true;
 
 const int led = LED_BUILTIN;
-//HaltechCAN canBus();
+HaltechCAN canBus;
 CCD ccdBus;
 
 float lastMPH = 0;
@@ -39,15 +39,13 @@ void setup() {
 		Serial.println(F("CAN-CCD Bus"));
 	}
 
-	/*if (canBus.init()) {
+	if (canBus.init()) {
 		canBus.setMask(0x360 | 0x361 | 0x370 | 0x372 | 0x3E0 | 0x3E2 | 0x3E4);
 		digitalWrite(led, HIGH);
 	} else {
 		digitalWrite(led, LOW);
-	}*/
-	digitalWrite(led, HIGH);
-	//ccdBus = new CCD(Serial1);
-	//ccdBus.init(Serial1);
+	}
+
 	ccdBus.init(&Serial1);
 	ccdBus.setVoltage(14);
 	ccdBus.setOilPSI(35);
