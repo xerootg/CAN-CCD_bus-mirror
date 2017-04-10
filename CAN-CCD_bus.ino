@@ -47,17 +47,10 @@ void setup() {
 	}
 
 	ccdBus.init(&Serial1);
-	ccdBus.setVoltage(14);
-	ccdBus.setOilPSI(35);
-	ccdBus.setFuelPercent(50);
-	ccdBus.setCoolantTemperature(210);
 	ccdBus.setAirBagLight(false);
-	ccdBus.setCheckGaugesLight(false);
-	ccdBus.setCheckEngineLight(false);
 	ccdBus.setSKIMLight(false);
 	ccdBus.setShiftLight(false);
 	ccdBus.setCruiseLight(false);
-	ccdBus.doUpdates();
 	lastMillis = millis();
 }
 
@@ -75,12 +68,17 @@ void loop() {
 		Serial.println(bitfield, HEX);
 	}*/
 
-	ccdBus.setRPM(rpm + random(0, 10));
-	ccdBus.setMPH(55);
-	ccdBus.setKPH(85.5);
-	Serial.println(ccdBus.doUpdates());
+	ccdBus.setVoltage(canBus.getVoltage());
+	ccdBus.setOilPSI(canBus.getOilPSI());
+	ccdBus.setFuelPercent(canBus.getFuelPercent());
+	ccdBus.setCoolantTemperature(canBus.getCoolantTemperature());
+	ccdBus.setCheckGaugesLight(canBus.getCheckGaugesLight());
+	ccdBus.setCheckEngineLight(canBus.getCheckEngineLight());
+	ccdBus.setRPM(canBus.getRPM());
+	ccdBus.setMPH(canBus.getMPH());
+	ccdBus.setKPH(canBus.getKPH());
+	ccdBus.doUpdates();
 
-	delay(100);
 	//ccdBus.busTransmit(FEATURE_STATUS_ID, 2, bitfield, bitfield);
 	//canBus.tick();
 }
