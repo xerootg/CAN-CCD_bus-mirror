@@ -8,34 +8,24 @@ CANBase::CANBase() {
 
 }
 
-/*
- * Initialize CAN bus and other necessary information.
- *
- * @access	public
- * @return	void
- */
-float CANBase::init() {
-	int speedIndex = this->canBus.begin();
-
-	if (speedIndex != 255) {
-		this->busInitialized = true;
-		this->canBus.setListenOnly(true);
-		return true;
-	}
-	return false;
-}
-
 void CANBase::setMask(uint32_t idFilter) {
-	CAN_filter_t filter;
+	/*CAN_filter_t filter;
 	filter.id = idFilter;
-	this->canBus.setMask(filter);
+	this->canBus.setMask(filter);*/
 }
 
-void CANBase::tick() {
-	if (this->busInitialized && this->canBus.available()) {
-		this->canBus.read(this->rxMsg);
-		this->busRecieve();
+bool CANBase::frameHandler(CAN_message_t &frame, int mailbox, uint8_t controller) {
+	Serial.print("PID: ");
+	Serial.print(frame.id, HEX);
+	Serial.print(" Data:");
+    for (int x = 0; x < frame.len; x++) {
+		Serial.print(frame.buf[x], HEX);
+		Serial.write(' ');
 	}
+	Serial.print(" Timestamp: ");
+	Serial.println(frame.timestamp);
+
+	return true;
 }
 
 void CANBase::setFilters(uint32_t f0, uint32_t f1, uint32_t f2, uint32_t f3, uint32_t f4, uint32_t f5, uint32_t f6, uint32_t f7) {

@@ -15,7 +15,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#define XJ_PLATFORM true
+#define XJ_SECGEN_PLATFORM true
+#define MJ_PLATFORM true
 
 //#include "src/Boards.h"
 #include "src/CCD/CCD.h"
@@ -39,8 +40,12 @@ void setup() {
 		Serial.println(F("CAN-CCD Bus"));
 	}
 
-	if (canBus.init()) {
-		canBus.setMask(0x360 | 0x361 | 0x370 | 0x372 | 0x3E0 | 0x3E2 | 0x3E4);
+	Can0.begin(1000000);
+	pinMode(2, OUTPUT);
+	digitalWrite(2, HIGH);
+	if (Can0.attachObj(&canBus)) {
+		//canBus.setMask(0x360 | 0x361 | 0x370 | 0x372 | 0x3E0 | 0x3E2 | 0x3E4);
+		canBus.attachGeneralHandler();
 		digitalWrite(led, HIGH);
 	} else {
 		digitalWrite(led, LOW);
@@ -80,5 +85,4 @@ void loop() {
 	ccdBus.doUpdates();
 
 	//ccdBus.busTransmit(FEATURE_STATUS_ID, 2, bitfield, bitfield);
-	//canBus.tick();
 }

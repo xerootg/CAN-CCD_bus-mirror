@@ -6,8 +6,7 @@
 class HaltechCAN: public CANBase {
 	public:
 		HaltechCAN();
-	private:
-		void busRecieve();
+		bool frameHandler(CAN_message_t &frame, int mailbox, uint8_t controller);
 };
 
 #endif
